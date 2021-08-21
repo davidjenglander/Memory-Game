@@ -96,7 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		cardsChosenId = [];
 		resultDisplay.textContent = cardsWon.length;
 		if (cardsWon.length === cardArray.length / 2) {
-			resultDisplay.textContent = 'Congratulations! You found them all!';
+			resultDisplay.parentElement.innerHTML =
+				'Congratulations! You found them all!<br><p class="dd">The screen will refresh in a few seconds so you may play again</p>';
+			reloader();
 		}
 	}
 
@@ -112,4 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	createBoard();
+
+	function reloader() {
+		var redo = setInterval(loadz, 6000);
+		function loadz() {
+			location.reload();
+		}
+	}
 });
+
